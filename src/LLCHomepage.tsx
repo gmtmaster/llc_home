@@ -1,370 +1,351 @@
-import React from "react";
-import {
-  ArrowUpRight,
-  Dot,
-  Mail,
-  MapPin,
-  Sparkles,
-  Boxes,
-  Layers3,
-  Activity,
-  Shield,
-} from "lucide-react";
+export default function LLCCorporateHomepage() {
+  const capabilities = [
+    {
+      title: "Digital Products",
+      text: "Independent software products and tools developed with a focus on utility, structure, and long-term usability.",
+    },
+    {
+      title: "Internal Systems",
+      text: "Operational dashboards, workflows, and technical systems built to support real execution rather than presentation alone.",
+    },
+    {
+      title: "Brand & Web Presence",
+      text: "Clean digital identities, landing pages, and web experiences designed to communicate seriousness and clarity.",
+    },
+    {
+      title: "Venture Buildout",
+      text: "Selective incubation of private ideas, products, and commercial concepts with disciplined scope and clear direction.",
+    },
+  ];
 
-interface Project {
-  name: string;
-  status: string;
-  description: string;
-  tag: string;
-}
+  const projects = [
+    {
+      number: "01",
+      name: "Trace",
+      type: "Outreach Software",
+      status: "Extension-first product",
+      description:
+        "A focused outreach tool built around Reddit messaging workflows, extension-first validation, and a more disciplined approach to outbound software.",
+      tags: ["Product", "Automation", "Lead Generation"],
+      accent: "red",
+      visual: "trace",
+    },
+    {
+      number: "02",
+      name: "Uplinked",
+      type: "Creator Platform",
+      status: "SaaS platform",
+      description:
+        "A creator-facing platform centered on profile infrastructure, monetization, analytics, subscriptions, and digital publishing workflows.",
+      tags: ["SaaS", "Payments", "Analytics"],
+      accent: "blue",
+      visual: "uplinked",
+    },
+    {
+      number: "03",
+      name: "Brew Notes",
+      type: "Operational Software",
+      status: "Internal product system",
+      description:
+        "A brewing operations system for batch tracking, process visibility, inventory flow, and production-oriented internal tooling.",
+      tags: ["Operations", "Dashboard", "Workflow"],
+      accent: "gold",
+      visual: "brew",
+    },
+  ];
 
-const projects: Project[] = [
-  {
-    name: "Trace",
-    status: "In validation",
-    description:
-      "An outreach software product focused on Reddit prospecting, DM workflow design, and scalable lead generation systems.",
-    tag: "Outreach SaaS",
-  },
-  {
-    name: "BrewNotes",
-    status: "Active build",
-    description:
-      "A brewery operations platform for recipes, planning, fermentation tracking, and production visibility.",
-    tag: "Vertical software",
-  },
-  {
-    name: "Uplinked",
-    status: "Built",
-    description:
-      "A creator infrastructure product exploring profile systems, subscriptions, lightweight publishing, and monetization.",
-    tag: "Creator tools",
-  },
-  {
-    name: "Labs",
-    status: "R&D",
-    description:
-      "A stream of smaller software bets, internal tools, and niche product experiments with long-term upside.",
-    tag: "Experimental systems",
-  },
-];
-
-const pillars = [
-  {
-    icon: Layers3,
-    title: "Focused products",
-    text: "Small surface area, clear positioning, and category-specific execution.",
-  },
-  {
-    icon: Activity,
-    title: "Built to compound",
-    text: "Each product is designed as a durable software asset, not a one-off project.",
-  },
-  {
-    icon: Shield,
-    title: "Independent by default",
-    text: "Bootstrapped, design-conscious, and optimized for long-term control.",
-  },
-];
-
-const notes = [
-  "Design-led product development",
-  "Clear categories over feature sprawl",
-  "Neutral systems with selective brand accents",
-  "Built to scale without losing taste",
-];
-
-export default function LLCHomepageDraft(): JSX.Element {
-  return (
-    <main className="min-h-screen bg-[var(--bg)] text-[var(--text)]">
-      <div className="relative overflow-hidden border-b border-white/10">
-        <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top,rgba(214,195,161,0.10),transparent_28%),radial-gradient(circle_at_80%_20%,rgba(255,255,255,0.05),transparent_22%),linear-gradient(to_bottom,rgba(255,255,255,0.02),transparent_35%)]" />
-        <div className="absolute inset-0 -z-10 opacity-[0.04] [background-image:linear-gradient(rgba(255,255,255,0.35)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.35)_1px,transparent_1px)] [background-size:68px_68px]" />
-
-        <div className="mx-auto w-full max-w-[1280px] px-6 md:px-8 xl:px-10">
-          <header className="flex items-center justify-between border-b border-white/10 py-5">
-            <div className="flex items-center gap-3">
-              <div className="flex h-11 w-11 items-center justify-center rounded-2xl border border-[var(--accent-border)] bg-[var(--accent-soft)] text-sm font-medium text-[var(--accent)]">
-                GL
-              </div>
-              <div>
-                <p className="text-sm font-medium tracking-[0.18em] text-[var(--text)]">
-                  Greyline Labs
-                </p>
-                <p className="text-xs text-[var(--text-muted)]">
-                  Umbrella company for software products
-                </p>
-              </div>
+  function ProjectVisual({ type }) {
+    if (type === "trace") {
+      return (
+        <div className="relative h-56 overflow-hidden border-b border-[#c9d5e3] bg-[linear-gradient(135deg,#163d6b_0%,#1d4d87_62%,#274f80_100%)]">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(242,194,48,0.24),transparent_28%),radial-gradient(circle_at_bottom_left,rgba(178,34,52,0.2),transparent_35%)]" />
+          <div className="absolute left-6 top-6 w-[72%] border border-white/15 bg-white/10 p-4 backdrop-blur-[2px]">
+            <div className="mb-3 h-2 w-24 bg-[#f4cf45]" />
+            <div className="space-y-2">
+              <div className="h-2 w-full bg-white/70" />
+              <div className="h-2 w-[88%] bg-white/45" />
+              <div className="h-2 w-[72%] bg-white/25" />
             </div>
+          </div>
+          <div className="absolute bottom-6 right-6 w-[48%] border border-white/15 bg-[#102d4d]/85 p-4 shadow-[0_10px_30px_rgba(0,0,0,0.15)]">
+            <div className="mb-3 flex items-center justify-between">
+              <div className="h-2 w-20 bg-white/60" />
+              <div className="h-2 w-10 bg-[#b22234]" />
+            </div>
+            <div className="space-y-2">
+              <div className="h-9 border border-white/10 bg-white/5" />
+              <div className="h-9 border border-white/10 bg-white/5" />
+            </div>
+          </div>
+        </div>
+      );
+    }
 
-            <nav className="hidden items-center gap-8 text-sm text-[var(--text-soft)] md:flex">
-              <a href="#projects" className="transition hover:text-[var(--text)]">
-                Projects
-              </a>
-              <a href="#platform" className="transition hover:text-[var(--text)]">
-                Platform
-              </a>
-              <a href="#approach" className="transition hover:text-[var(--text)]">
-                Approach
-              </a>
-              <a href="#contact" className="transition hover:text-[var(--text)]">
-                Contact
-              </a>
-            </nav>
-          </header>
+    if (type === "uplinked") {
+      return (
+        <div className="relative h-56 overflow-hidden border-b border-[#c9d5e3] bg-[linear-gradient(135deg,#edf4fb_0%,#dce8f4_100%)]">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(29,77,135,0.14),transparent_30%),radial-gradient(circle_at_bottom_left,rgba(242,194,48,0.18),transparent_34%)]" />
+          <div className="absolute left-7 top-7 w-[58%] rounded-[2px] border border-[#bdd0e2] bg-white p-4 shadow-[0_8px_24px_rgba(22,61,107,0.08)]">
+            <div className="mb-4 flex gap-2">
+              <div className="h-2 w-2 rounded-full bg-[#b22234]" />
+              <div className="h-2 w-2 rounded-full bg-[#f2c230]" />
+              <div className="h-2 w-2 rounded-full bg-[#1d4d87]" />
+            </div>
+            <div className="grid grid-cols-3 gap-2">
+              <div className="h-16 bg-[#e9f0f7]" />
+              <div className="h-16 bg-[#d8e6f4]" />
+              <div className="h-16 bg-[#e9f0f7]" />
+            </div>
+            <div className="mt-3 h-2 w-[70%] bg-[#204d83]" />
+            <div className="mt-2 h-2 w-[52%] bg-[#89a7c6]" />
+          </div>
+          <div className="absolute bottom-7 right-7 w-[34%] rounded-[2px] border border-[#bdd0e2] bg-white p-4 shadow-[0_8px_24px_rgba(22,61,107,0.08)]">
+            <div className="h-20 bg-[linear-gradient(180deg,#1d4d87_0%,#335d91_100%)]" />
+            <div className="mt-3 h-2 w-[76%] bg-[#204d83]" />
+            <div className="mt-2 h-2 w-[54%] bg-[#9ab2cc]" />
+          </div>
+        </div>
+      );
+    }
 
-          <section className="grid min-h-[calc(100vh-88px)] items-center gap-14 py-14 md:py-20 lg:grid-cols-[minmax(0,1.1fr)_minmax(420px,0.9fr)] lg:gap-16">
-            <div className="max-w-[720px]">
-              <div className="mb-7 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-4 py-2 text-sm text-[var(--text-soft)] backdrop-blur">
-                <Sparkles className="h-4 w-4 text-[var(--accent)]" />
-                Software products, systems, and long-term digital assets
-              </div>
+    return (
+      <div className="relative h-56 overflow-hidden border-b border-[#c9d5e3] bg-[linear-gradient(135deg,#fffdf3_0%,#f7f1d6_100%)]">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(178,34,52,0.12),transparent_28%),radial-gradient(circle_at_bottom_right,rgba(22,61,107,0.16),transparent_34%)]" />
+        <div className="absolute left-7 top-7 w-[62%] border border-[#e6d896] bg-white/90 p-4 shadow-[0_10px_28px_rgba(22,61,107,0.08)]">
+          <div className="mb-3 flex gap-2">
+            <div className="h-8 flex-1 bg-[#17375e]" />
+            <div className="h-8 w-14 bg-[#f2c230]" />
+          </div>
+          <div className="grid grid-cols-4 gap-2">
+            <div className="h-14 bg-[#eef2f6]" />
+            <div className="h-14 bg-[#dce6f0]" />
+            <div className="h-14 bg-[#eef2f6]" />
+            <div className="h-14 bg-[#dce6f0]" />
+          </div>
+        </div>
+        <div className="absolute bottom-7 right-7 w-[42%] border border-[#e6d896] bg-[#17375e] p-4">
+          <div className="space-y-2">
+            <div className="h-2 w-[82%] bg-white/75" />
+            <div className="h-2 w-[62%] bg-white/40" />
+            <div className="mt-4 h-16 bg-white/10" />
+          </div>
+        </div>
+      </div>
+    );
+  }
 
-              <h1 className="max-w-[760px] text-[3.2rem] font-medium leading-[0.92] tracking-[-0.05em] text-[var(--text)] md:text-[5.5rem] xl:text-[6.3rem]">
-                Building focused
-                <span className="block text-[var(--text-muted)]">technology products</span>
-                <span className="block text-[var(--accent)]">with long-term brand value.</span>
+  return (
+    <div className="min-h-screen bg-[#eef2f6] text-[#1a2c44]">
+      <div className="border-b border-[#294e7a] bg-[#163d6b] text-white">
+        <div className="mx-auto flex w-full max-w-[1280px] items-center justify-between px-6 py-4 lg:px-10">
+          <div className="flex items-center gap-4">
+            <div>
+              
+              <p className="font-serif text-xl tracking-[0.04em] text-white">Maestral Technologies</p>
+            </div>
+          </div>
+
+          <nav className="hidden items-center gap-0 md:flex">
+            {[
+              ["Home", "#top"],
+              ["Projects", "#projects"],
+              ["Capabilities", "#capabilities"],
+              ["Contact", "#contact"],
+            ].map(([label, href], index) => (
+              <a
+                key={label}
+                href={href}
+                className={`px-5 py-4 text-sm font-semibold tracking-[0.08em] text-white transition hover:bg-[#1d4d87] ${index > 0 ? "border-l border-white/10" : ""}`}
+              >
+                {label}
+              </a>
+            ))}
+          </nav>
+        </div>
+        <div className="h-[4px] w-full bg-[#f2c230]" />
+      </div>
+
+      <main id="top">
+        <section className="border-b border-[#c6d2e0] bg-white">
+          <div className="mx-auto grid w-full max-w-[1280px] gap-0 px-6 lg:grid-cols-[1.2fr_0.8fr] lg:px-10">
+            <div className="py-16 pr-0 lg:border-r lg:border-[#d5deea] lg:py-20 lg:pr-14">
+              <p className="mb-4 text-[11px] font-semibold uppercase tracking-[0.3em] text-[#b22234]">
+                Showcase • Systems • Product Direction
+              </p>
+
+              <h1 className="max-w-4xl font-serif text-4xl leading-[1.06] text-[#14345a] sm:text-5xl lg:text-6xl">
+                A private company building digital products, operational systems, and focused web assets.
               </h1>
 
-              <div className="mt-8 max-w-[620px] space-y-4 text-base leading-8 text-[var(--text-soft)] md:text-lg">
-                <p>
-                  Greyline Labs is a small independent company building niche software,
-                  product infrastructure, and experimental systems under one roof.
-                </p>
-                <p>
-                  We prefer sharp positioning, clean execution, and products that feel modern without becoming noisy.
-                </p>
-              </div>
+              <p className="mt-6 max-w-2xl text-[17px] leading-8 text-[#4d6076]">
+                This page presents selected project directions, current capabilities, and the overall operating style behind the company. The design stays formal, restrained, and intentionally American-corporate in tone.
+              </p>
 
-              <div className="mt-10 flex flex-wrap gap-4">
+              <div className="mt-10 flex flex-wrap gap-3">
                 <a
                   href="#projects"
-                  className="inline-flex items-center gap-2 rounded-full border border-[var(--accent-border)] bg-[var(--accent)] px-5 py-3 text-sm font-medium text-black transition hover:-translate-y-0.5"
+                  className="inline-flex items-center justify-center border border-[#163d6b] bg-[#163d6b] px-5 py-3 text-sm font-semibold uppercase tracking-[0.14em] text-white transition hover:bg-[#1d4d87]"
                 >
-                  Explore projects
-                  <ArrowUpRight className="h-4 w-4" />
+                  View Selected Projects
                 </a>
                 <a
                   href="#contact"
-                  className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-5 py-3 text-sm font-medium text-[var(--text)] transition hover:bg-white/[0.07]"
+                  className="inline-flex items-center justify-center border border-[#f2c230] bg-[#f7d252] px-5 py-3 text-sm font-semibold uppercase tracking-[0.14em] text-[#17375e] transition hover:bg-[#f0c63a]"
                 >
-                  Get in touch
+                  Contact
                 </a>
               </div>
+            </div>
 
-              <div className="mt-12 grid gap-4 sm:grid-cols-3">
-                <div className="rounded-3xl border border-white/10 bg-white/[0.03] p-5">
-                  <p className="text-sm text-[var(--text-muted)]">Model</p>
-                  <p className="mt-3 text-xl font-medium tracking-tight">Independent</p>
+            <div className="py-16 lg:py-20 lg:pl-14">
+              <div className="border border-[#c9d5e3] bg-[#f7f9fc]">
+                <div className="border-b border-[#c9d5e3] bg-[#163d6b] px-6 py-4">
+                  <p className="text-xs font-semibold uppercase tracking-[0.24em] text-[#f4cf45]">Company Snapshot</p>
                 </div>
-                <div className="rounded-3xl border border-white/10 bg-white/[0.03] p-5">
-                  <p className="text-sm text-[var(--text-muted)]">Focus</p>
-                  <p className="mt-3 text-xl font-medium tracking-tight">Software assets</p>
-                </div>
-                <div className="rounded-3xl border border-white/10 bg-white/[0.03] p-5">
-                  <p className="text-sm text-[var(--text-muted)]">Approach</p>
-                  <p className="mt-3 text-xl font-medium tracking-tight">Design + systems</p>
+
+                <div className="divide-y divide-[#d9e1ea]">
+                  {[
+                    ["Selected Work", "03 Active Project Directions"],
+                    ["Core Model", "Private Build and Venture Development"],
+                    ["Primary Output", "Products, Systems, and Digital Infrastructure"],
+                  ].map(([label, value]) => (
+                    <div key={label} className="grid grid-cols-[150px_1fr] gap-4 px-6 py-4">
+                      <p className="text-[12px] font-semibold uppercase tracking-[0.16em] text-[#1f4f89]">{label}</p>
+                      <p className="text-[15px] leading-7 text-[#223a57]">{value}</p>
+                    </div>
+                  ))}
                 </div>
               </div>
             </div>
+          </div>
+        </section>
 
-            <div className="relative">
-              <div className="absolute -left-6 top-10 hidden h-32 w-32 rounded-full bg-[var(--accent-soft)] blur-3xl lg:block" />
-              <div className="rounded-[32px] border border-white/10 bg-white/[0.035] p-4 shadow-[var(--shadow)] backdrop-blur md:p-5">
-                <div className="rounded-[28px] border border-white/10 bg-[#10100f]">
-                  <div className="flex items-center justify-between border-b border-white/10 px-5 py-4">
-                    <div className="flex items-center gap-3">
-                      <div className="flex h-9 w-9 items-center justify-center rounded-xl border border-[var(--accent-border)] bg-[var(--accent-soft)] text-[var(--accent)]">
-                        <Boxes className="h-4 w-4" />
-                      </div>
+        <section id="projects" className="border-b border-[#c6d2e0] bg-[#eef2f6]">
+          <div className="mx-auto w-full max-w-[1280px] px-6 py-16 lg:px-10">
+            <div className="max-w-3xl">
+              <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-[#b22234]">Selected Projects</p>
+              <h2 className="mt-3 font-serif text-3xl text-[#14345a] sm:text-4xl">A more visual showcase of current product and system directions.</h2>
+              <p className="mt-4 max-w-2xl text-[16px] leading-8 text-[#4d6076]">
+                Instead of plain information rows, the projects are presented as structured showcase cards with preview panels, clearer hierarchy, and a more portfolio-like feel.
+              </p>
+            </div>
+
+            <div className="mt-10 grid gap-8 lg:grid-cols-3">
+              {projects.map((project) => (
+                <article
+                  key={project.name}
+                  className="overflow-hidden border border-[#c9d5e3] bg-white shadow-[0_8px_24px_rgba(20,52,90,0.05)]"
+                >
+                  <ProjectVisual type={project.visual} />
+
+                  <div className="p-6">
+                    <div className="flex items-start justify-between gap-4">
                       <div>
-                        <p className="text-sm font-medium">Product portfolio</p>
-                        <p className="text-xs text-[var(--text-muted)]">Live company snapshot</p>
+                        <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-[#1d4d87]">{project.type}</p>
+                        <h3 className="mt-2 font-serif text-[30px] leading-none text-[#16365f]">{project.name}</h3>
                       </div>
+                      <span className="text-sm font-semibold tracking-[0.18em] text-[#b22234]">{project.number}</span>
                     </div>
-                    <div className="rounded-full border border-white/10 bg-white/[0.04] px-3 py-1 text-xs text-[var(--text-muted)]">
-                      Internal
-                    </div>
-                  </div>
 
-                  <div className="grid gap-3 p-4">
-                    {projects.slice(0, 3).map((project) => (
-                      <div
-                        key={project.name}
-                        className="rounded-2xl border border-white/10 bg-white/[0.03] p-4 transition hover:border-[var(--accent-border)]"
-                      >
-                        <div className="flex items-start justify-between gap-3">
-                          <div>
-                            <div className="inline-flex rounded-full border border-white/10 bg-white/[0.04] px-2.5 py-1 text-[11px] text-[var(--text-muted)]">
-                              {project.tag}
-                            </div>
-                            <h3 className="mt-3 text-lg font-medium">{project.name}</h3>
-                          </div>
-                          <span className="rounded-full border border-[var(--accent-border)] bg-[var(--accent-soft)] px-2.5 py-1 text-[11px] text-[var(--accent)]">
-                            {project.status}
-                          </span>
-                        </div>
-                        <p className="mt-3 text-sm leading-7 text-[var(--text-soft)]">
-                          {project.description}
-                        </p>
-                      </div>
-                    ))}
-                  </div>
+                    <div className="mt-5 border-t border-[#d9e1ea] pt-5">
+                      <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-[#1d4d87]">Status</p>
+                      <p className="mt-2 text-[15px] leading-7 text-[#223a57]">{project.status}</p>
+                    </div>
 
-                  <div className="grid gap-px border-t border-white/10 bg-white/10 md:grid-cols-2">
-                    <div className="bg-[#10100f] px-5 py-4">
-                      <p className="text-xs uppercase tracking-[0.22em] text-[var(--text-muted)]">
-                        Structure
-                      </p>
-                      <p className="mt-2 text-sm text-[var(--text-soft)]">
-                        Umbrella company for products, experiments, and software IP.
-                      </p>
-                    </div>
-                    <div className="bg-[#10100f] px-5 py-4">
-                      <p className="text-xs uppercase tracking-[0.22em] text-[var(--text-muted)]">
-                        Direction
-                      </p>
-                      <p className="mt-2 text-sm text-[var(--text-soft)]">
-                        Calm brand language, technical execution, selective ambition.
-                      </p>
+                    <p className="mt-5 text-[15px] leading-8 text-[#4b5f76]">{project.description}</p>
+
+                    <div className="mt-6 flex flex-wrap gap-2">
+                      {project.tags.map((tag) => (
+                        <span
+                          key={tag}
+                          className="border border-[#ecd98e] bg-[#fff7d7] px-3 py-1.5 text-[11px] font-semibold uppercase tracking-[0.14em] text-[#815d05]"
+                        >
+                          {tag}
+                        </span>
+                      ))}
                     </div>
                   </div>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section id="capabilities" className="border-b border-[#c6d2e0] bg-white">
+          <div className="mx-auto w-full max-w-[1280px] px-6 py-16 lg:px-10">
+            <div className="max-w-3xl">
+              <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-[#b22234]">Capabilities</p>
+              <h2 className="mt-3 font-serif text-3xl text-[#14345a] sm:text-4xl">The work is presented simply, without filler or startup theater.</h2>
+            </div>
+
+            <div className="mt-10 grid gap-0 border border-[#c9d5e3] md:grid-cols-2">
+              {capabilities.map((item, index) => (
+                <div
+                  key={item.title}
+                  className={`bg-[#f8fbfe] p-7 ${index % 2 === 0 ? "md:border-r" : ""} ${index < 2 ? "border-b" : ""} border-[#c9d5e3]`}
+                >
+                  <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-[#1d4d87]">Area {String(index + 1).padStart(2, "0")}</p>
+                  <h3 className="mt-3 font-serif text-2xl text-[#16365f]">{item.title}</h3>
+                  <p className="mt-3 max-w-xl text-[15px] leading-7 text-[#4b5f76]">{item.text}</p>
                 </div>
-              </div>
+              ))}
             </div>
-          </section>
-        </div>
-      </div>
+          </div>
+        </section>
 
-      <section id="platform" className="border-b border-white/10 bg-white/[0.02]">
-        <div className="mx-auto grid w-full max-w-[1280px] gap-px bg-white/10 px-6 md:px-8 xl:px-10 lg:grid-cols-3">
-          {pillars.map((pillar) => {
-            const Icon = pillar.icon;
-            return (
-              <div key={pillar.title} className="bg-[var(--bg)] px-0 py-0">
-                <div className="h-full px-6 py-8 md:px-8">
-                  <Icon className="h-5 w-5 text-[var(--accent)]" />
-                  <h3 className="mt-5 text-xl font-medium tracking-tight">{pillar.title}</h3>
-                  <p className="mt-3 max-w-sm text-sm leading-7 text-[var(--text-soft)] md:text-base">
-                    {pillar.text}
-                  </p>
+        <section id="contact" className="bg-[#eef2f6]">
+          <div className="mx-auto grid w-full max-w-[1280px] gap-10 px-6 py-16 lg:grid-cols-[0.9fr_1.1fr] lg:px-10">
+            <div>
+              <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-[#b22234]">Contact</p>
+              <h2 className="mt-3 font-serif text-3xl text-[#14345a] sm:text-4xl">Business inquiries and project discussions.</h2>
+            </div>
+
+            <div className="grid gap-0 border border-[#c9d5e3] bg-white">
+              {[
+                ["Office", "Maestral Technologies LLC"],
+                ["Email", "business@maestraltech.com"],
+                ["Focus", "Digital products, systems, and venture development"],
+                ["Availability", "Direct inquiry only"],
+              ].map(([label, value]) => (
+                <div key={label} className="grid grid-cols-[160px_1fr] border-b border-[#d9e1ea] px-6 py-4 last:border-b-0">
+                  <p className="text-[12px] font-semibold uppercase tracking-[0.16em] text-[#1d4d87]">{label}</p>
+                  <p className="text-[15px] leading-7 text-[#223a57]">{value}</p>
                 </div>
-              </div>
-            );
-          })}
-        </div>
-      </section>
-
-      <section id="projects" className="mx-auto w-full max-w-[1280px] px-6 py-20 md:px-8 md:py-24 xl:px-10">
-        <div className="grid gap-12 lg:grid-cols-[320px_minmax(0,1fr)] lg:gap-16">
-          <div>
-            <p className="text-xs uppercase tracking-[0.28em] text-[var(--text-muted)]">
-              Selected projects
-            </p>
-            <h2 className="mt-4 text-4xl font-medium leading-tight tracking-[-0.04em] md:text-5xl">
-              A portfolio of focused software bets.
-            </h2>
-            <p className="mt-6 max-w-sm text-base leading-8 text-[var(--text-soft)]">
-              Different categories, same philosophy: clear problem framing, lean product design, and room to grow.
-            </p>
-          </div>
-
-          <div className="space-y-5">
-            {projects.map((project, index) => (
-              <article
-                key={project.name}
-                className="group grid gap-5 rounded-[30px] border border-white/10 bg-white/[0.03] p-6 transition duration-300 hover:border-[var(--accent-border)] hover:bg-white/[0.05] md:grid-cols-[88px_minmax(0,1fr)] md:p-7"
-              >
-                <div className="text-sm text-[var(--text-muted)]">0{index + 1}</div>
-
-                <div>
-                  <div className="flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
-                    <div>
-                      <div className="inline-flex rounded-full border border-[var(--accent-border)] bg-[var(--accent-soft)] px-3 py-1 text-xs text-[var(--accent)]">
-                        {project.tag}
-                      </div>
-                      <h3 className="mt-4 text-2xl font-medium tracking-tight md:text-[2rem]">
-                        {project.name}
-                      </h3>
-                    </div>
-
-                    <div className="w-fit rounded-full border border-white/10 bg-white/[0.04] px-3 py-1 text-xs text-[var(--text-muted)]">
-                      {project.status}
-                    </div>
-                  </div>
-
-                  <p className="mt-5 max-w-2xl text-sm leading-7 text-[var(--text-soft)] md:text-base">
-                    {project.description}
-                  </p>
-
-                  <div className="mt-7 inline-flex items-center gap-2 text-sm text-[var(--text)]">
-                    Project overview
-                    <ArrowUpRight className="h-4 w-4 transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                  </div>
-                </div>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section id="approach" className="mx-auto w-full max-w-[1280px] px-6 py-4 md:px-8 md:py-8 xl:px-10">
-        <div className="grid gap-8 rounded-[34px] border border-white/10 bg-white/[0.035] p-8 md:grid-cols-[0.9fr_1.1fr] md:gap-12 md:p-12">
-          <div>
-            <p className="text-xs uppercase tracking-[0.28em] text-[var(--text-muted)]">Approach</p>
-            <h2 className="mt-4 text-3xl font-medium leading-tight tracking-[-0.04em] md:text-5xl">
-              Less noise. More signal.
-            </h2>
-          </div>
-
-          <div className="space-y-5 text-base leading-8 text-[var(--text-soft)]">
-            <p>
-              This is not positioned as a large agency with endless services. It is a home for software products,
-              experiments, and digital infrastructure built under one operating umbrella.
-            </p>
-            <p>
-              The visual language stays restrained, the technology stays modern, and the products are allowed to carry the story.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <section className="mx-auto w-full max-w-[1280px] px-6 py-20 md:px-8 md:py-24 xl:px-10">
-        <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
-          {notes.map((item) => (
-            <div
-              key={item}
-              className="rounded-3xl border border-white/10 bg-white/[0.03] px-5 py-5 text-sm text-[var(--text-soft)]"
-            >
-              <div className="mb-3 h-1 w-10 rounded-full bg-[var(--accent)]/70" />
-              {item}
+              ))}
             </div>
-          ))}
-        </div>
-      </section>
+          </div>
+        </section>
+      </main>
 
-      <footer id="contact" className="border-t border-white/10">
-        <div className="mx-auto grid w-full max-w-[1280px] gap-10 px-6 py-14 md:px-8 md:py-20 xl:grid-cols-[1fr_auto] xl:items-end xl:px-10">
+      <footer className="border-t border-[#f2c230] bg-[#163d6b] text-white">
+        <div className="mx-auto flex w-full max-w-[1280px] flex-col gap-8 px-6 py-10 lg:flex-row lg:items-start lg:justify-between lg:px-10">
           <div>
-            <p className="text-xs uppercase tracking-[0.28em] text-[var(--text-muted)]">Contact</p>
-            <h2 className="mt-4 max-w-2xl text-4xl font-medium leading-tight tracking-[-0.04em] md:text-6xl">
-              Interested in the company,
-              <span className="block text-[var(--text-muted)]">the products, or what comes next?</span>
-            </h2>
+            <p className="text-[11px] uppercase tracking-[0.3em] text-[#f4cf45]">Maestral Technologies LLC</p>
+            <p className="mt-3 max-w-2xl text-sm leading-7 text-white/80">
+              Private company showcase presented in a restrained American corporate visual language.
+            </p>
           </div>
 
-          <div className="space-y-4 text-sm text-[var(--text-soft)]">
-            <div className="flex items-center gap-3">
-              <Mail className="h-4 w-4 text-[var(--accent)]" />
-              <span>adam@greyline.me</span>
+          <div className="grid gap-8 text-sm leading-7 text-white/88 sm:grid-cols-2 lg:text-left">
+            <div>
+              <p className="font-semibold uppercase tracking-[0.12em] text-[#f4cf45]">Business Contact</p>
+              <p className="mt-2">business@maestraltech.com</p>
+              <p>Direct inquiry only</p>
             </div>
-            <div className="flex items-center gap-3">
-              <MapPin className="h-4 w-4 text-[var(--accent)]" />
-              <span>Sheridan, WY</span>
+            <div>
+              <p className="font-semibold uppercase tracking-[0.12em] text-[#f4cf45]">Site Policies</p>
+              <p className="mt-2">Privacy Policy</p>
+              <p>Terms of Use</p>
             </div>
+          </div>
+        </div>
+
+        <div className="border-t border-white/10 bg-[#102d4d]">
+          <div className="mx-auto w-full max-w-[1280px] px-6 py-4 text-xs leading-6 text-white/70 lg:px-10">
+            © 2026 Maestral Technologies LLC. All rights reserved.
           </div>
         </div>
       </footer>
-    </main>
+    </div>
   );
 }
