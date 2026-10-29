@@ -22,7 +22,6 @@ export default function ContactForm() {
     const form = event.currentTarget;
     if (!form.reportValidity()) return;
     const data = new FormData(form);
-    // Let Formspree apply the same honeypot rules as a native submission.
     inFlight.current = true;
     const controller = new AbortController();
     request.current = controller;
@@ -180,15 +179,6 @@ export default function ContactForm() {
                   {fields.message}
                 </p>
               )}
-            </div>
-            <div className="contact-honeypot" aria-hidden="true">
-              <label htmlFor="contact-website">Leave this field empty</label>
-              <input
-                id="contact-website"
-                name="_gotcha"
-                tabIndex={-1}
-                autoComplete="off"
-              />
             </div>
             <input
               type="hidden"
