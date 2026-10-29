@@ -7,6 +7,7 @@ import {
   FlaskConical,
 } from "lucide-react";
 import ProjectShowcase from "./ProjectShowcase";
+import ContactForm from "./ContactForm";
 
 const capabilities = [
   {
@@ -153,14 +154,7 @@ export default function MaestralHomepage() {
                 worth exploring, get in touch with Maestral Technologies.
               </p>
             </div>
-            <a
-              className="contact-email"
-              href="mailto:business@maestraltech.com"
-            >
-              <span>Get in touch</span>
-              <b>business@maestraltech.com</b>
-              <ArrowUpRight size={26} aria-hidden="true" />
-            </a>
+            <ContactForm />
           </div>
         </section>
       </main>

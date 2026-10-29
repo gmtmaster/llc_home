@@ -72,9 +72,9 @@ export default function PrivacyNotice() {
                 This Privacy Policy applies to the Maestral Technologies
                 corporate website at{" "}
                 <span className="legal-placeholder">[WEBSITE DOMAIN]</span> and
-                business correspondence initiated through its contact details.
-                “Maestral”, “we”, “us”, and “our” refer to the operator
-                identified below.
+                contact-form submissions and business correspondence initiated
+                through its contact channels. “Maestral”, “we”, “us”, and “our”
+                refer to the operator identified below.
               </p>
               <p>
                 The website introduces Maestral and showcases its products and
@@ -143,10 +143,13 @@ export default function PrivacyNotice() {
               </p>
               <h3>Business correspondence</h3>
               <p>
-                If you contact us, we process the information you provide, such
-                as your name, email address, organisation, message, attachments,
-                and correspondence metadata. We use it to respond, discuss a
-                project, and manage the resulting communication.
+                When you use the contact form, we process your email address,
+                message, and name if supplied. Formspree, Inc. receives the
+                submission and associated technical information to deliver the
+                form service and help prevent spam. Subsequent correspondence
+                may include other information you choose to provide. We use this
+                information to respond, discuss a project, and manage the
+                resulting communication.
               </p>
               <p>
                 Where necessary to take steps you request before entering a
@@ -160,15 +163,24 @@ export default function PrivacyNotice() {
               <p>
                 Contacting us is voluntary. Without a reply address and enough
                 information about your inquiry, we may be unable to respond.
-                Please do not email passwords, full payment-card details, or
+                Please do not send passwords, full payment-card details, or
                 unnecessary sensitive information.
               </p>
-              <h3>Website functionality</h3>
+              <h3>Contact form and website functionality</h3>
+              <p>
+                The contact form sends your entries to Formspree when you submit
+                it. Email and message are required; name is optional. The form
+                does not subscribe you to a mailing list, request payment
+                information, or create an account. The website does not save
+                unfinished form entries to browser storage. Formspree may store
+                submissions and forward them to the mailbox configured by
+                Maestral.
+              </p>
               <p>
                 <span className="legal-placeholder">
-                  [CONFIRM BEFORE PUBLICATION: THE CORPORATE WEBSITE HAS NO USER
-                  ACCOUNTS, CONTACT FORM, NEWSLETTER SIGN-UP, OR CHECKOUT.
-                  CONTACT LINKS OPEN THE VISITOR’S EMAIL APPLICATION.]
+                  [CONFIRM THE ACTUAL FORMSPREE DASHBOARD RETENTION,
+                  NOTIFICATION RECIPIENTS, SPAM-PROTECTION SETTINGS, AND ANY
+                  CONFIGURED INTEGRATIONS.]
                 </span>
               </p>
               <p>
@@ -237,6 +249,21 @@ export default function PrivacyNotice() {
                   </dd>
                 </div>
                 <div>
+                  <dt>Contact-form processing</dt>
+                  <dd>
+                    Formspree, Inc. — submission handling and spam prevention.{" "}
+                    <a
+                      href="https://formspree.io/legal/privacy-policy/"
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      Formspree Privacy Policy
+                    </a>
+                    . [CONFIRM CONTRACTUAL TERMS, SUBPROCESSORS, AND APPLICABLE
+                    TRANSFER SAFEGUARDS.]
+                  </dd>
+                </div>
+                <div>
                   <dt>Security / other</dt>
                   <dd>
                     [LIST ANY ADDITIONAL ACTUAL PROVIDERS, OR REMOVE THIS ROW]
@@ -259,6 +286,12 @@ export default function PrivacyNotice() {
             </section>
             <section id="privacy-transfers">
               <h2>6. International transfers</h2>
+              <p>
+                Formspree states that it processes personal information in the
+                United States and other countries where it operates. [CONFIRM
+                THE ACTUAL TRANSFER BASIS AND AVAILABLE SAFEGUARDS FOR THIS
+                ACCOUNT BEFORE PUBLICATION.]
+              </p>
               <p>
                 <span className="legal-placeholder">
                   [IDENTIFY WHETHER ANY PROVIDER, SUBPROCESSOR, SUPPORT TEAM, OR
@@ -294,7 +327,8 @@ export default function PrivacyNotice() {
                 <div>
                   <dt>General inquiries</dt>
                   <dd>
-                    [RETENTION PERIOD OR SPECIFIC DELETION CRITERIA FOR EMAIL
+                    [RETENTION PERIODS AND DELETION CRITERIA FOR FORMSPREE
+                    SUBMISSIONS, EMAIL NOTIFICATIONS, AND SUBSEQUENT
                     CORRESPONDENCE]
                   </dd>
                 </div>
