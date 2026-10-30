@@ -7,16 +7,13 @@ const publication = {
   effectiveDate: "29 October 2026",
   lastUpdated: "30 October 2026",
   operator: "Lekrinszki Ádám E.V.",
-  registeredAddress: "[REGISTERED BUSINESS ADDRESS, HUNGARY]",
   mailingAddress: "Hungary - 6230 Soltvadkert, Koltoi Anna utca 186.",
   registrationNumber: "60801649",
   registrationAuthority: "HU",
   taxNumber: "91290038-1-23",
   privacyEmail: "business@maestral.tech",
 };
-const publicationPending = Object.values(publication).some((value) =>
-  value.startsWith("["),
-);
+
 const sections = [
   ["scope", "Scope"],
   ["controller", "Operator and controller"],
