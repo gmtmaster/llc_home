@@ -1,20 +1,52 @@
 import { ArrowLeft, ArrowUpRight } from "lucide-react";
 
+// Complete these publication details before publishing the notice.
+// A correspondence address does not replace a legally required registered address.
+const publication = {
+  website: "www.maestral.tech",
+  effectiveDate: "29 October 2026",
+  lastUpdated: "30 October 2026",
+  operator: "Lekrinszki Ádám E.V.",
+  registeredAddress: "[REGISTERED BUSINESS ADDRESS, HUNGARY]",
+  mailingAddress: "Hungary - 6230 Soltvadkert, Koltoi Anna utca 186.",
+  registrationNumber: "60801649",
+  registrationAuthority: "HU",
+  taxNumber: "91290038-1-23",
+  privacyEmail: "business@maestral.tech",
+};
+const publicationPending = Object.values(publication).some((value) =>
+  value.startsWith("["),
+);
 const sections = [
   ["scope", "Scope"],
-  ["controller", "Who is responsible"],
+  ["controller", "Operator and controller"],
   ["information", "Information and purposes"],
   ["cookies", "Cookies and tracking"],
-  ["providers", "Service providers"],
-  ["transfers", "International transfers"],
+  ["providers", "Recipients and providers"],
+  ["transfers", "International processing"],
   ["retention", "Retention"],
   ["security", "Security"],
-  ["rights", "Your privacy rights"],
+  ["rights", "EEA privacy rights"],
   ["us", "United States residents"],
   ["children", "Children’s privacy"],
-  ["links", "External services"],
+  ["links", "Links and product previews"],
   ["updates", "Changes and contact"],
 ];
+const external = { target: "_blank", rel: "noreferrer" };
+function PublicationField({ value }: { value: string }) {
+  return (
+    <span className={value.startsWith("[") ? "legal-placeholder" : undefined}>
+      {value}
+    </span>
+  );
+}
+function PrivacyEmail() {
+  return (
+    <a href={`mailto:${publication.privacyEmail}`}>
+      {publication.privacyEmail}
+    </a>
+  );
+}
 
 export default function PrivacyNotice() {
   return (
@@ -37,23 +69,15 @@ export default function PrivacyNotice() {
           <p className="section-kicker">Legal & privacy</p>
           <h1>Privacy Policy</h1>
           <p className="privacy-subtitle">
-            How personal information is handled when you visit the Maestral
-            Technologies corporate website or contact its operator.
+            How Maestral Technologies handles information when you visit its
+            corporate website or get in touch.
           </p>
           <p className="privacy-date">
             Effective date:{" "}
-            <span className="legal-placeholder">[EFFECTIVE DATE]</span> · Last
-            updated:{" "}
-            <span className="legal-placeholder">[LAST UPDATED DATE]</span>
+            <PublicationField value={publication.effectiveDate} /> · Last
+            updated: {publication.lastUpdated}
           </p>
-          <div className="privacy-draft">
-            <b>Draft — not finalised</b>
-            <p>
-              Bracketed fields identify missing details or statements that must
-              be verified against the live website configuration before
-              publication. This notice covers the corporate website only.
-            </p>
-          </div>
+          
         </div>
         <div className="privacy-layout">
           <nav className="privacy-toc" aria-label="Privacy policy contents">
@@ -69,433 +93,528 @@ export default function PrivacyNotice() {
             <section id="privacy-scope">
               <h2>1. Scope</h2>
               <p>
-                This Privacy Policy applies to the Maestral Technologies
-                corporate website at{" "}
-                <span className="legal-placeholder">[WEBSITE DOMAIN]</span> and
-                contact-form submissions and business correspondence initiated
-                through its contact channels. “Maestral”, “we”, “us”, and “our”
-                refer to the operator identified below.
+                This notice applies to the Maestral Technologies corporate
+                website at <PublicationField value={publication.website} />, its
+                contact form, and related business correspondence. “Maestral”,
+                “we”, “us”, and “our” mean the legal operator identified in
+                section 2.
               </p>
               <p>
-                The website introduces Maestral and showcases its products and
-                development capabilities. The applications featured on it have
-                separate privacy notices. This notice does not cover account
-                registration, subscriptions, payment processing, customer
-                content, or wearable health-data processing within those
-                applications.
+                The website presents Maestral’s work and products. It does not
+                provide user accounts, a newsletter subscription, or a payment
+                checkout. Sending a message does not create an account,
+                subscribe you to marketing, or authorise a payment.
+              </p>
+              <p>
+                Applications featured here, including the wedding platform,
+                Uplinked, BrewOS, and the wearable platform, are separate
+                services. Their account, customer-content, payment, and
+                health-data processing is outside this notice and must be
+                explained in the notice applicable to the relevant product.
+                Stripe is not integrated into this corporate website’s contact
+                flow.
               </p>
             </section>
             <section id="privacy-controller">
-              <h2>2. Who is responsible</h2>
+              <h2>2. Operator and data controller</h2>
               <p>
-                The controller for the processing described here is{" "}
-                <strong>Lekrinszki Ádám E.V.</strong>, a Hungarian sole
-                proprietor operating under the Maestral Technologies brand.
+                The operator and data controller is{" "}
+                <strong>{publication.operator}</strong>, a Hungarian sole
+                proprietor trading as Maestral Technologies.
               </p>
               <dl className="privacy-details">
                 <div>
-                  <dt>Registered address</dt>
-                  <dd>[REGISTERED BUSINESS ADDRESS, HUNGARY]</dd>
+                  <dt>Legal operator</dt>
+                  <dd>{publication.operator}</dd>
+                </div>
+                
+                <div>
+                  <dt>Mailing / correspondence address</dt>
+                  <dd>
+                    <PublicationField value={publication.mailingAddress} />
+                  </dd>
                 </div>
                 <div>
-                  <dt>Registration number</dt>
-                  <dd>[SOLE PROPRIETOR REGISTRATION NUMBER]</dd>
+                  <dt>Business registration number</dt>
+                  <dd>
+                    <PublicationField value={publication.registrationNumber} />
+                  </dd>
                 </div>
                 <div>
-                  <dt>Privacy contact</dt>
-                  <dd>[PRIVACY CONTACT EMAIL]</dd>
+                  <dt>Registration authority</dt>
+                  <dd>
+                    <PublicationField
+                      value={publication.registrationAuthority}
+                    />
+                  </dd>
                 </div>
                 <div>
-                  <dt>Postal contact</dt>
-                  <dd>[POSTAL ADDRESS, IF DIFFERENT]</dd>
+                  <dt>Business tax number</dt>
+                  <dd>
+                    <PublicationField value={publication.taxNumber} />
+                  </dd>
+                </div>
+                <div>
+                  <dt>Privacy and business contact</dt>
+                  <dd>
+                    <PrivacyEmail />
+                  </dd>
                 </div>
               </dl>
               <p>
-                <span className="legal-placeholder">
-                  [IF APPLICABLE: INSERT THE DATA PROTECTION OFFICER’S CONTACT
-                  DETAILS; OTHERWISE REMOVE THIS LINE.]
-                </span>
+                Use the privacy email for questions and rights requests. You can
+                also write to the correspondence address above. Please identify
+                the website or message concerned, without including unnecessary
+                confidential information.
               </p>
             </section>
             <section id="privacy-information">
-              <h2>3. Information we process and why</h2>
-              <h3>Website delivery and security</h3>
+              <h2>3. Information, purposes, and legal bases</h2>
+              <h3>Visiting the website</h3>
               <p>
-                When you request a page or image, the infrastructure used to
-                serve the website receives technical information needed to
-                handle the request. Depending on the hosting and security
-                configuration, this can include an IP address, request date and
-                time, requested URL, browser or device headers, response status,
-                and diagnostic information.
+                Serving a page or image involves processing technical request
+                information. Our hosting and security infrastructure can receive
+                your IP address, request time, requested resource, browser and
+                operating-system information, referring page where supplied,
+                response status, and diagnostic or abuse-prevention information.
+                These details originate from your browser and network
+                connection.
               </p>
               <p>
-                <span className="legal-placeholder">
-                  [CONFIRM THE ACTUAL TECHNICAL DATA PROCESSED AND WHETHER IT IS
-                  LOGGED BY THE HOST, CDN, OR SECURITY PROVIDER.]
-                </span>
+                We use the infrastructure to deliver the website, maintain
+                availability, investigate faults, and prevent abuse. Where the
+                GDPR applies, the legal basis is Article 6(1)(f): our legitimate
+                interests in operating a reliable website and protecting it and
+                its visitors. We do not operate a separate visitor-profile
+                database or use this information to build advertising profiles.
+              </p>
+              <h3>Contact-form submissions and correspondence</h3>
+              <p>
+                The contact form asks for your email address and message. Name
+                is optional. Formspree receives those fields and technical
+                information associated with the submission, processes them to
+                handle delivery and spam prevention, and makes the submission
+                available to us. It can also forward a notification to our
+                designated mailbox. We do not receive your email account
+                password.
               </p>
               <p>
-                The purpose is to deliver the website, diagnose errors, and
-                prevent misuse. The GDPR legal basis is legitimate interests
-                under Article 6(1)(f): operating a reliable, secure corporate
-                website. Any processing based on this ground must be necessary
-                and balanced against individuals’ rights.
-              </p>
-              <h3>Business correspondence</h3>
-              <p>
-                When you use the contact form, we process your email address,
-                message, and name if supplied. Formspree, Inc. receives the
-                submission and associated technical information to deliver the
-                form service and help prevent spam. Subsequent correspondence
-                may include other information you choose to provide. We use this
-                information to respond, discuss a project, and manage the
-                resulting communication.
+                We use your message to respond, assess an inquiry, discuss a
+                project, and maintain the resulting correspondence. If you write
+                directly by email, we also receive normal email metadata and any
+                information or attachments you choose to include. Your message
+                may contain business details such as an organisation or role; we
+                do not require them.
               </p>
               <p>
-                Where necessary to take steps you request before entering a
-                contract with you, the legal basis is Article 6(1)(b) GDPR.
-                Other relevant business correspondence is handled under Article
-                6(1)(f), reflecting our legitimate interest in responding to
-                inquiries and maintaining business relationships. Records
-                subject to an identified statutory obligation are retained under
-                Article 6(1)(c).
+                The GDPR legal basis is Article 6(1)(b) where processing is
+                necessary for steps you request before entering a contract with
+                you. For other business inquiries, including communications with
+                someone acting for an organisation, it is Article 6(1)(f): our
+                legitimate interest in answering relevant communications and
+                managing business relationships. We rely on Article 6(1)(c) when
+                a specific legal obligation requires a record, and Article
+                6(1)(f) where limited information is necessary to establish,
+                exercise, or defend legal claims.
               </p>
               <p>
-                Contacting us is voluntary. Without a reply address and enough
-                information about your inquiry, we may be unable to respond.
-                Please do not send passwords, full payment-card details, or
-                unnecessary sensitive information.
+                Providing information is voluntary, but a valid email address
+                and sufficient message details are needed to send the form and
+                receive a response. Please do not send passwords, full card
+                numbers, identity documents, health records, or other
+                unnecessary sensitive information. The website does not collect
+                payment-card details through its form.
               </p>
-              <h3>Contact form and website functionality</h3>
+              <h3>What happens to unfinished messages</h3>
               <p>
-                The contact form sends your entries to Formspree when you submit
-                it. Email and message are required; name is optional. The form
-                does not subscribe you to a mailing list, request payment
-                information, or create an account. The website does not save
-                unfinished form entries to browser storage. Formspree may store
-                submissions and forward them to the mailbox configured by
-                Maestral.
-              </p>
-              <p>
-                <span className="legal-placeholder">
-                  [CONFIRM THE ACTUAL FORMSPREE DASHBOARD RETENTION,
-                  NOTIFICATION RECIPIENTS, SPAM-PROTECTION SETTINGS, AND ANY
-                  CONFIGURED INTEGRATIONS.]
-                </span>
-              </p>
-              <p>
-                Not having an account database does not mean that no personal
-                information is processed: technical infrastructure and email
-                correspondence can still involve personal data.
+                The website keeps entries in the active page while you complete
+                the form. It does not save drafts to local storage or session
+                storage. Entries are sent to Formspree when you submit the form;
+                they are cleared after a successful submission. Your browser or
+                password manager may independently offer autofill or save
+                information under settings you control.
               </p>
             </section>
             <section id="privacy-cookies">
-              <h2>4. Cookies, analytics, and tracking</h2>
+              <h2>4. Cookies, analytics, and advertising</h2>
               <p>
-                <span className="legal-placeholder">
-                  [INSERT THE VERIFIED PRODUCTION COOKIE/STORAGE STATEMENT. IF
-                  NONE ARE USED, STATE THAT. OTHERWISE IDENTIFY EACH COOKIE OR
-                  STORAGE CATEGORY, PURPOSE, PROVIDER, DURATION, AND ANY
-                  REQUIRED CONSENT CONTROLS.]
-                </span>
+                The corporate website’s application code does not set cookies,
+                use local or session storage, or include advertising pixels,
+                social-media tracking widgets, or visitor-analytics scripts.
+                Images are served with the website; product previews are static
+                images rather than embedded applications.
               </p>
               <p>
-                <span className="legal-placeholder">
-                  [CONFIRM WHETHER HOSTING ANALYTICS, ERROR MONITORING,
-                  ADVERTISING PIXELS, THIRD-PARTY EMBEDS, OR SIMILAR TOOLS ARE
-                  ENABLED. LIST ONLY THE TOOLS ACTUALLY USED.]
-                </span>
+                Hosting, delivery, and submission providers still process
+                necessary technical information to deliver their services and
+                protect them from abuse. Any strictly necessary security
+                mechanism is used for that limited purpose. This is distinct
+                from optional audience measurement or advertising tracking.
               </p>
               <p>
-                <span className="legal-placeholder">
-                  [CONFIRM: WE DO NOT SELL PERSONAL INFORMATION, SHARE IT FOR
-                  CROSS-CONTEXT BEHAVIOURAL ADVERTISING, OR USE IT FOR TARGETED
-                  ADVERTISING.]
-                </span>
+                We do not sell personal information, disclose it for
+                cross-context behavioural advertising, use it for targeted
+                advertising, or track visitors across unrelated websites for
+                advertising. Service-provider processing described here supports
+                website delivery, security, and communications, rather than an
+                advertising exchange.
               </p>
               <p>
-                <span className="legal-placeholder">
-                  [DESCRIBE THE ACTUAL RESPONSE TO GLOBAL PRIVACY CONTROL AND DO
-                  NOT TRACK SIGNALS. IF NO SALE, ADVERTISING SHARING, OR
-                  TARGETED ADVERTISING OCCURS, EXPLAIN THAT THERE IS NO SUCH
-                  ACTIVITY FOR THE SIGNAL TO OPT OUT OF. DO NOT CLAIM
-                  SIGNAL-HANDLING SOFTWARE THAT IS NOT IMPLEMENTED.]
-                </span>
+                Because those sale and advertising-sharing activities are not
+                carried out, a Global Privacy Control signal has no such
+                activity to switch off. The application does not implement a
+                separate response to a browser’s Do Not Track setting; the
+                no-advertising-tracking practices above apply regardless of that
+                setting. These signals do not prevent necessary website delivery
+                or a contact submission you request.
               </p>
               <p>
-                Any optional tracking added later must be reflected here and
-                subject to any consent or opt-out controls required by
-                applicable law.
+                If optional cookies, analytics, or advertising features are
+                introduced, this notice and any required consent or preference
+                controls must be updated before those features are activated.
               </p>
             </section>
             <section id="privacy-providers">
-              <h2>5. Service providers and other recipients</h2>
+              <h2>5. Recipients and service providers</h2>
+              <h3>Vercel — website hosting and delivery</h3>
               <p>
-                The providers engaged to deliver the website and handle business
-                email may process the information necessary for those services.
+                <strong>Vercel Inc.</strong> provides the infrastructure used to
+                host and deliver the website. It processes technical request and
+                service information to operate and secure its infrastructure.
+                Its published contact address is 440 N Barranca Avenue #4133,
+                Covina, CA 91723, United States; its privacy contact is{" "}
+                <a href="mailto:privacy@vercel.com">privacy@vercel.com</a>. See{" "}
+                <a href="https://vercel.com/legal/privacy-notice" {...external}>
+                  Vercel’s Privacy Notice
+                </a>{" "}
+                and{" "}
+                <a href="https://vercel.com/legal/dpa" {...external}>
+                  Data Processing Addendum
+                </a>
+                . The contractual terms applicable to a customer depend on its
+                service agreement and plan.
               </p>
-              <dl className="privacy-details">
-                <div>
-                  <dt>Hosting / CDN</dt>
-                  <dd>
-                    [PROVIDER LEGAL NAME, SERVICE, DATA REGION, PRIVACY LINK]
-                  </dd>
-                </div>
-                <div>
-                  <dt>Email</dt>
-                  <dd>
-                    [EMAIL PROVIDER LEGAL NAME, SERVICE, DATA REGION, PRIVACY
-                    LINK]
-                  </dd>
-                </div>
-                <div>
-                  <dt>Contact-form processing</dt>
-                  <dd>
-                    Formspree, Inc. — submission handling and spam prevention.{" "}
-                    <a
-                      href="https://formspree.io/legal/privacy-policy/"
-                      target="_blank"
-                      rel="noreferrer"
-                    >
-                      Formspree Privacy Policy
-                    </a>
-                    . [CONFIRM CONTRACTUAL TERMS, SUBPROCESSORS, AND APPLICABLE
-                    TRANSFER SAFEGUARDS.]
-                  </dd>
-                </div>
-                <div>
-                  <dt>Security / other</dt>
-                  <dd>
-                    [LIST ANY ADDITIONAL ACTUAL PROVIDERS, OR REMOVE THIS ROW]
-                  </dd>
-                </div>
-              </dl>
+              <h3>Formspree — contact-form delivery and spam prevention</h3>
               <p>
-                Where providers act as processors on our behalf, appropriate
-                processing terms must govern their access and use. Some
-                providers may act as independent controllers for their own
-                specified purposes; their role must be identified accurately.
+                <strong>Formspree, Inc.</strong> handles contact submissions. It
+                receives the submitted name, if supplied, email address,
+                message, and associated technical information such as IP
+                address, browser information, and submission timing. Submissions
+                may be stored in its inbox and forwarded to our business email.
+                Formspree states that its infrastructure is hosted in the United
+                States. See{" "}
+                <a
+                  href="https://formspree.io/legal/privacy-policy/"
+                  {...external}
+                >
+                  Formspree’s Privacy Policy
+                </a>{" "}
+                and{" "}
+                <a href="https://formspree.io/security/" {...external}>
+                  Security information
+                </a>
+                .
+              </p>
+              <h3>Email, administration, and lawful disclosures</h3>
+              <p>
+                Business email and communications providers receive
+                correspondence and delivery metadata as necessary to receive,
+                store, and transmit our messages. Professional advisers may
+                receive limited records when necessary for an identified legal
+                or administrative matter. We can provide further information
+                about the providers relevant to a particular inquiry through the
+                privacy contact.
               </p>
               <p>
-                Where necessary and lawful, information may also be disclosed to
-                competent authorities, courts, or professional advisers to
-                comply with a legal obligation or establish, exercise, or defend
-                legal claims. Disclosures are limited to what is necessary for
-                the relevant purpose.
+                Where a provider processes information on our instructions, it
+                acts as a processor. A provider may separately act as an
+                independent controller for purposes it determines, such as its
+                own legal obligations or infrastructure security; its notice
+                explains those activities. Disclosures to authorities or courts
+                are made where required by law or otherwise lawfully necessary.
+                We limit disclosures to the purpose involved.
+              </p>
+              <p>
+                We do not make contact-form submissions public or add senders to
+                a marketing list merely because they contact us.
               </p>
             </section>
             <section id="privacy-transfers">
-              <h2>6. International transfers</h2>
+              <h2>6. International processing</h2>
               <p>
-                Formspree states that it processes personal information in the
-                United States and other countries where it operates. [CONFIRM
-                THE ACTUAL TRANSFER BASIS AND AVAILABLE SAFEGUARDS FOR THIS
-                ACCOUNT BEFORE PUBLICATION.]
+                The operator is established in Hungary. Vercel and Formspree are
+                US-based providers, and their infrastructure or authorised
+                service providers may process information in the United States
+                and other countries. This website does not promise EU-only
+                processing.
               </p>
               <p>
-                <span className="legal-placeholder">
-                  [IDENTIFY WHETHER ANY PROVIDER, SUBPROCESSOR, SUPPORT TEAM, OR
-                  OTHER RECIPIENT PROCESSES OR ACCESSES PERSONAL DATA OUTSIDE
-                  THE EEA. IDENTIFY THE RELEVANT COUNTRIES AND TRANSFER
-                  MECHANISMS.]
-                </span>
+                For transfers subject to the GDPR, a valid Chapter V mechanism
+                is required. Formspree publicly states that it relies on
+                Standard Contractual Clauses as a processor. Vercel describes
+                Standard Contractual Clauses in its applicable processing terms
+                and participation in the EU–US Data Privacy Framework for
+                covered processing. These mechanisms apply only within their
+                relevant scope and where legally available; a link to a
+                provider’s policy is not a substitute for the applicable
+                contractual arrangements.
               </p>
               <p>
-                Where required, transfers must be supported by a relevant
-                adequacy decision or appropriate safeguards, such as applicable
-                Standard Contractual Clauses and any necessary supplementary
-                measures. The final notice will identify the mechanism actually
-                used and how to obtain information about the safeguards through
-                the privacy contact. An EU hosting region alone does not
-                establish that all processing remains within the EEA.
+                You may contact us for information about the safeguards
+                applicable to the processing of your information, including how
+                to obtain a copy of relevant contractual safeguards, subject to
+                necessary redactions to protect other persons or confidential
+                information.
               </p>
             </section>
             <section id="privacy-retention">
-              <h2>7. How long information is kept</h2>
+              <h2>7. Retention and deletion</h2>
+              <h3>Routine inquiries</h3>
               <p>
-                Retention depends on the purpose, any applicable legal
-                requirements, and the configuration of the services used.
+                We retain ordinary contact submissions and correspondence while
+                handling the inquiry and for up to{" "}
+                <strong>
+                  12 months after the last substantive communication
+                </strong>
+                , to allow reasonable follow-up. This applies to copies under
+                our control in the Formspree inbox and business mailbox. Copies
+                may be removed sooner, including where a provider’s shorter
+                storage period applies or a valid deletion request is fulfilled.
               </p>
-              <dl className="privacy-details">
-                <div>
-                  <dt>Technical logs</dt>
-                  <dd>
-                    [ACTUAL RETENTION PERIODS FOR HOSTING, CDN, SECURITY, AND
-                    ERROR LOGS; STATE IF A CATEGORY IS NOT RETAINED]
-                  </dd>
-                </div>
-                <div>
-                  <dt>General inquiries</dt>
-                  <dd>
-                    [RETENTION PERIODS AND DELETION CRITERIA FOR FORMSPREE
-                    SUBMISSIONS, EMAIL NOTIFICATIONS, AND SUBSEQUENT
-                    CORRESPONDENCE]
-                  </dd>
-                </div>
-                <div>
-                  <dt>Contract / legal records</dt>
-                  <dd>
-                    [APPLICABLE STATUTORY OR CLAIM-RELATED PERIODS AND THE
-                    RECORDS THEY APPLY TO]
-                  </dd>
-                </div>
-                <div>
-                  <dt>Backups</dt>
-                  <dd>
-                    [BACKUP EXPIRY / DELETION CYCLE AND ANY RESTRICTED
-                    RETENTION]
-                  </dd>
-                </div>
-              </dl>
+              <h3>Spam and unsolicited material</h3>
               <p>
-                Information no longer needed for a lawful purpose is deleted or
-                irreversibly anonymised. If a limited record must be retained
-                after a deletion request, its use is restricted to the reason it
-                must be kept.
+                Material identified as spam, an accidental submission, or
+                unrelated unsolicited content is removed once assessed and no
+                longer needed for abuse prevention, ordinarily within{" "}
+                <strong>30 days</strong> of that assessment. A limited record of
+                an ongoing abuse incident may be retained while necessary to
+                investigate or protect the service.
+              </p>
+              <h3>Technical and security information</h3>
+              <p>
+                We do not create a separate database of visitor browsing
+                histories. Hosting and security providers keep the technical
+                records needed to operate and protect their infrastructure under
+                their applicable service schedules and legal responsibilities.
+                Their retention is determined by the service,
+                incident-investigation needs, and applicable legal requirements;
+                their notices linked above explain their own retention
+                practices. Information preserved for a specific incident is kept
+                only while necessary to investigate, resolve, or document that
+                incident or related legal claims.
+              </p>
+              <h3>Records that need longer retention</h3>
+              <p>
+                If an inquiry becomes a contractual relationship, relevant
+                contract or legally required business records are kept for the
+                applicable statutory retention period. Evidence needed for a
+                specific legal claim may be retained until the relevant
+                limitation period expires or the matter is finally resolved. We
+                retain only the records relevant to that obligation or claim,
+                rather than all correspondence indefinitely.
+              </p>
+              <p>
+                When the purpose and any lawful retention requirement end,
+                records under our control are deleted or irreversibly
+                anonymised. Residual provider backup copies can remain until
+                overwritten under the provider’s applicable backup cycle; they
+                are not a reason to resume ordinary use of data that should have
+                been deleted. Requests concerning provider-held copies are
+                coordinated with the relevant provider where required.
               </p>
             </section>
             <section id="privacy-security">
-              <h2>8. Security</h2>
+              <h2>8. Security and automated processing</h2>
               <p>
-                <span className="legal-placeholder">
-                  [DESCRIBE THE SAFEGUARDS ACTUALLY IMPLEMENTED, SUCH AS HTTPS,
-                  RESTRICTED ADMINISTRATIVE ACCESS, MULTI-FACTOR AUTHENTICATION,
-                  AND APPROPRIATE PROVIDER AGREEMENTS. REMOVE ANY UNIMPLEMENTED
-                  CLAIM.]
-                </span>
+                The website and its Formspree endpoint use HTTPS for
+                transmission. Access to correspondence is limited to persons who
+                need it to handle the inquiry or a related lawful task. We
+                minimise the information requested and do not operate a
+                contact-form database on a separate Maestral application server.
               </p>
               <p>
-                No internet service can guarantee absolute security. If a
-                personal data breach occurs, we assess and address it and
-                provide notifications where required by applicable law.
+                Our safeguards are proportionate to the information and risks
+                involved. No online service can guarantee absolute security. If
+                a personal data breach occurs, we assess it and notify the
+                competent authority and affected individuals where required by
+                applicable law.
+              </p>
+              <p>
+                The website does not make solely automated decisions producing
+                legal or similarly significant effects about visitors.
+                Formspree’s automated spam and abuse checks can affect whether
+                an inquiry is delivered. These checks do not determine
+                eligibility for a service, employment, credit, or another
+                similarly significant outcome. If you believe a genuine message
+                was filtered, contact the privacy or business email directly.
               </p>
             </section>
             <section id="privacy-rights">
               <h2>9. EEA privacy rights</h2>
               <p>
-                Subject to the conditions and exceptions in applicable law, you
-                may request access to your personal data, correction of
-                inaccurate information, erasure, restriction of processing, or
-                data portability. You may object to processing based on
-                legitimate interests on grounds relating to your particular
-                situation. If a specific activity relies on consent, you may
-                withdraw that consent without affecting earlier lawful
-                processing.
+                Where the GDPR applies, you may request access to your personal
+                data and information about its processing; correction of
+                inaccurate information; erasure; or restriction of processing.
+                Portability applies where the relevant processing is automated
+                and based on consent or a contract. These rights are subject to
+                their statutory conditions and exceptions.
               </p>
               <p>
-                Contact{" "}
-                <span className="legal-placeholder">
-                  [PRIVACY CONTACT EMAIL]
-                </span>{" "}
-                to make a request. We may seek proportionate information to
-                verify your identity, without requesting unnecessary
-                identification. Requests under the GDPR are normally answered
-                within one month. If a permitted extension is necessary, we
-                inform you within the first month and explain the reasons. Any
-                refusal is explained together with the available remedies.
+                You may object, on grounds relating to your particular
+                situation, to processing based on legitimate interests. We then
+                stop that processing unless we can demonstrate compelling
+                overriding legitimate grounds or processing is needed for legal
+                claims. If an activity relies on consent, you may withdraw that
+                consent without affecting earlier lawful processing. Ordinary
+                inquiry handling is based on the grounds identified in section
+                3, not blanket consent inferred from visiting the website.
               </p>
               <p>
-                You may complain to the Hungarian supervisory authority, the{" "}
+                Send requests to <PrivacyEmail /> or the mailing address in
+                section 2. Include enough detail to locate the information, such
+                as the address used for your inquiry. We may request
+                proportionate verification where needed, but not excessive
+                identification. There is no account to log into or delete on
+                this corporate website.
+              </p>
+              <p>
+                We respond without undue delay and normally within{" "}
+                <strong>one month</strong>. If a lawful extension is necessary
+                because of complexity or the number of requests, we may extend
+                by up to two further months and will explain this within the
+                first month. Requests are ordinarily free; any permitted fee or
+                refusal for a manifestly unfounded or excessive request will be
+                explained. We also explain any lawful limitation on the response
+                and the available complaint and judicial remedies.
+              </p>
+              <p>
+                You may complain to the{" "}
                 <strong>
                   Nemzeti Adatvédelmi és Információszabadság Hatóság (NAIH)
                 </strong>
-                , through{" "}
-                <a href="https://www.naih.hu/" target="_blank" rel="noreferrer">
-                  www.naih.hu <ArrowUpRight size={12} aria-hidden="true" />
+                , Hungary’s supervisory authority: 1055 Budapest, Falk Miksa
+                utca 9–11, Hungary; postal address: 1363 Budapest, Pf. 9. See{" "}
+                <a
+                  href="https://www.naih.hu/ugyfelszolgalat-kapcsolat"
+                  {...external}
+                >
+                  NAIH’s contact and submission procedures{" "}
+                  <ArrowUpRight size={12} aria-hidden="true" />
                 </a>
-                . You may also complain to a competent supervisory authority in
-                the EEA country where you habitually reside, work, or consider
-                an infringement to have occurred.
-              </p>
-              <p>
-                <span className="legal-placeholder">
-                  [CONFIRM: THIS CORPORATE WEBSITE DOES NOT MAKE SOLELY
-                  AUTOMATED DECISIONS THAT PRODUCE LEGAL OR SIMILARLY
-                  SIGNIFICANT EFFECTS ABOUT VISITORS.]
-                </span>
+                . Ordinary email to the authority is not necessarily a valid way
+                to initiate formal proceedings; follow its published procedures.
+                You may also complain to a competent authority in the EEA
+                country where you habitually reside, work, or consider an
+                infringement to have occurred, and seek a judicial remedy.
               </p>
             </section>
             <section id="privacy-us">
               <h2>10. United States residents</h2>
               <p>
-                US privacy rights depend on the state, the processing involved,
-                and whether the relevant law applies to the operator. Where
-                applicable, these rights may include access, correction,
-                deletion, portability, and opting out of sale, targeted
-                advertising, or certain profiling. Some state laws also provide
-                a right to appeal a privacy-request decision.
+                US privacy rights depend on your state of residence, the
+                information involved, and whether the relevant law applies to
+                the operator. This section does not represent that Maestral
+                meets the coverage thresholds of every US privacy statute.
+              </p>
+              <h3>Categories, sources, and disclosures</h3>
+              <p>
+                Our website-related categories are contact identifiers (name,
+                email address, and technical identifiers such as IP address),
+                internet or network activity (request and diagnostic
+                information), correspondence contents, and any professional
+                details you voluntarily include. Sources are your browser and
+                network connection, your direct submissions, and the hosting or
+                communication services handling them. We use these categories
+                for the purposes in section 3 and disclose them only to the
+                recipient categories in section 5 or as lawfully required. The
+                retention criteria in section 7 apply to each relevant category.
               </p>
               <p>
-                Requests may be sent to{" "}
-                <span className="legal-placeholder">
-                  [PRIVACY CONTACT EMAIL]
-                </span>
-                . We apply the verification, response periods, authorised-agent
-                rules, appeal procedures, and exceptions required by the law
-                that governs the request. We do not unlawfully discriminate
-                against individuals for exercising applicable privacy rights.
+                We do not request precise location, government identifiers,
+                payment credentials, biometric identifiers, or health
+                information through this website. Please avoid including
+                sensitive information in free-text messages. We do not use
+                sensitive information to infer visitor characteristics or
+                operate advertising profiles.
+              </p>
+              <h3>Sale, advertising, and preference signals</h3>
+              <p>
+                We do not sell personal information or share it for
+                cross-context behavioural advertising, and we do not use it for
+                targeted advertising or profiling that produces legal or
+                similarly significant effects. We do not knowingly sell or share
+                minors’ information. Section 4 explains Global Privacy Control
+                and Do Not Track handling. There is no sale or
+                advertising-sharing programme from which visitors need to opt
+                out.
+              </p>
+              <h3>Requests, authorised agents, and appeals</h3>
+              <p>
+                Where applicable, you may request confirmation or access,
+                correction, deletion, or a portable copy, and exercise any
+                applicable opt-out or sensitive-data rights. Send a request to{" "}
+                <PrivacyEmail /> or the mailing address above. An authorised
+                agent may submit a request with evidence of authority; we may
+                also verify the individual’s identity where permitted.
+                Verification is limited to what is reasonably necessary.
               </p>
               <p>
-                <span className="legal-placeholder">
-                  [COMPLETE THE US STATE-LAW APPLICABILITY ASSESSMENT. IF
-                  REQUIRED, INSERT THE SPECIFIC REQUEST AND APPEAL PROCESS,
-                  PRIOR-12-MONTH CATEGORY/PURPOSE/RECIPIENT DISCLOSURES, AND ANY
-                  ADDITIONAL CALIFORNIA OR OTHER STATE NOTICES. A GENERAL
-                  STATEMENT DOES NOT REPLACE THESE DISCLOSURES.]
-                </span>
+                We respond within the period required by the applicable state
+                law, including any shorter applicable deadline, and explain any
+                lawful extension or denial. To appeal a refusal where an appeal
+                right applies, reply to our decision or email the privacy
+                contact with “Privacy request appeal” in the subject. We review
+                the decision and provide a reasoned response within the
+                applicable deadline, together with information about any further
+                complaint to the relevant state authority. We do not unlawfully
+                discriminate against individuals for exercising their privacy
+                rights.
               </p>
             </section>
             <section id="privacy-children">
               <h2>11. Children’s privacy</h2>
               <p>
-                <span className="legal-placeholder">
-                  [CONFIRM THE INTENDED AUDIENCE AND WHETHER THE SITE IS
-                  DIRECTED TO CHILDREN. IF ACCURATE: THIS CORPORATE WEBSITE IS
-                  INTENDED FOR A GENERAL BUSINESS AUDIENCE AND IS NOT DIRECTED
-                  TO CHILDREN UNDER 13.]
-                </span>
-              </p>
-              <p>
-                If you believe a child has provided personal information through
-                this website’s contact channels, contact the privacy address so
-                that the situation can be assessed and appropriate steps taken.
+                This corporate website is intended for a general business
+                audience and is not directed to children under 13. We do not
+                knowingly solicit contact information from children under 13. If
+                you believe a child has provided personal information through
+                the contact channels, notify us so that we can assess and delete
+                it or take other steps required by law. Age-related rules for
+                separate Maestral applications must be addressed in their own
+                notices.
               </p>
             </section>
             <section id="privacy-links">
-              <h2>12. External websites and product services</h2>
+              <h2>12. External links and product previews</h2>
               <p>
-                Links to external websites, email applications, or separately
-                operated services may lead to different privacy practices.
-                Review the notice applicable to the destination. Maestral
-                remains responsible for its own processing and disclosures.
+                External websites and separately operated product services have
+                their own privacy practices. Review the notice applicable to the
+                destination. Linking to a provider’s notice does not remove our
+                responsibility for our own processing and disclosures.
               </p>
               <p>
-                The product screenshots on this corporate site are presentation
-                material; viewing them does not connect your device to those
-                products or import your health, account, or application data.
-                Application-specific collection and integrations must be
-                explained in the relevant product’s notice.
+                Product screenshots on this site are presentation material.
+                Viewing them does not create an account, connect your device to
+                the product, or import your application or health data. People
+                or information depicted in a preview are not information
+                collected from the visitor merely viewing that image.
               </p>
             </section>
             <section id="privacy-updates">
               <h2>13. Changes and contact</h2>
               <p>
-                This notice may be updated when website practices or legal
-                requirements change. The current version will show its effective
-                and last-updated dates. Material changes will be communicated
-                where required. Updating this notice does not by itself provide
-                consent for a new processing activity.
+                We update this notice when our website practices or applicable
+                requirements change and display the effective and last-updated
+                dates above. Material changes are communicated where required. A
+                revised notice does not itself provide consent to a new activity
+                or override your rights.
               </p>
               <p>
-                For privacy questions or requests, contact{" "}
-                <span className="legal-placeholder">
-                  [PRIVACY CONTACT EMAIL]
-                </span>{" "}
+                For questions, requests, or concerns, contact <PrivacyEmail />{" "}
                 or write to{" "}
-                <span className="legal-placeholder">
-                  [POSTAL CONTACT ADDRESS]
-                </span>
-                .
+                <PublicationField value={publication.mailingAddress} />. The
+                legal operator remains {publication.operator}, trading as
+                Maestral Technologies.
               </p>
             </section>
           </div>
