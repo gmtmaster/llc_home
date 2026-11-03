@@ -1,16 +1,11 @@
-import { ArrowLeft, ArrowUpRight } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
 
-// Complete these publication details before publishing the notice.
-// A correspondence address does not replace a legally required registered address.
 const publication = {
   website: "www.maestral.tech",
-  effectiveDate: "29 October 2026",
-  lastUpdated: "30 October 2026",
-  operator: "Lekrinszki Ádám E.V.",
-  mailingAddress: "Hungary - 6230 Soltvadkert, Koltoi Anna utca 186.",
-  registrationNumber: "60801649",
-  registrationAuthority: "HU",
-  taxNumber: "91290038-1-23",
+  effectiveDate: "3 November 2026",
+  lastUpdated: "3 November 2026",
+  operator: "Maestral Technologies LLC",
+  mailingAddress: "30 N Gould St Ste R, Sheridan, WY 82801, United States",
   privacyEmail: "business@maestral.tech",
 };
 
@@ -116,8 +111,8 @@ export default function PrivacyNotice() {
               <h2>2. Operator and data controller</h2>
               <p>
                 The operator and data controller is{" "}
-                <strong>{publication.operator}</strong>, a Hungarian sole
-                proprietor trading as Maestral Technologies.
+                <strong>{publication.operator}</strong>, a Wyoming limited
+                liability company.
               </p>
               <dl className="privacy-details">
                 <div>
@@ -129,26 +124,6 @@ export default function PrivacyNotice() {
                   <dt>Mailing / correspondence address</dt>
                   <dd>
                     <PublicationField value={publication.mailingAddress} />
-                  </dd>
-                </div>
-                <div>
-                  <dt>Business registration number</dt>
-                  <dd>
-                    <PublicationField value={publication.registrationNumber} />
-                  </dd>
-                </div>
-                <div>
-                  <dt>Registration authority</dt>
-                  <dd>
-                    <PublicationField
-                      value={publication.registrationAuthority}
-                    />
-                  </dd>
-                </div>
-                <div>
-                  <dt>Business tax number</dt>
-                  <dd>
-                    <PublicationField value={publication.taxNumber} />
                   </dd>
                 </div>
                 <div>
@@ -339,7 +314,7 @@ export default function PrivacyNotice() {
             <section id="privacy-transfers">
               <h2>6. International processing</h2>
               <p>
-                The operator is established in Hungary. Vercel and Formspree are
+                The operator is a Wyoming LLC. Vercel and Formspree are
                 US-based providers, and their infrastructure or authorised
                 service providers may process information in the United States
                 and other countries. This website does not promise EU-only
@@ -485,24 +460,10 @@ export default function PrivacyNotice() {
                 and the available complaint and judicial remedies.
               </p>
               <p>
-                You may complain to the{" "}
-                <strong>
-                  Nemzeti Adatvédelmi és Információszabadság Hatóság (NAIH)
-                </strong>
-                , Hungary’s supervisory authority: 1055 Budapest, Falk Miksa
-                utca 9–11, Hungary; postal address: 1363 Budapest, Pf. 9. See{" "}
-                <a
-                  href="https://www.naih.hu/ugyfelszolgalat-kapcsolat"
-                  {...external}
-                >
-                  NAIH’s contact and submission procedures{" "}
-                  <ArrowUpRight size={12} aria-hidden="true" />
-                </a>
-                . Ordinary email to the authority is not necessarily a valid way
-                to initiate formal proceedings; follow its published procedures.
-                You may also complain to a competent authority in the EEA
-                country where you habitually reside, work, or consider an
-                infringement to have occurred, and seek a judicial remedy.
+                Where the GDPR applies, you may lodge a complaint with a
+                competent supervisory authority in the EEA country where you
+                habitually reside, work, or consider an infringement to have
+                occurred, and seek a judicial remedy.
               </p>
             </section>
             <section id="privacy-us">
@@ -610,8 +571,7 @@ export default function PrivacyNotice() {
                 For questions, requests, or concerns, contact <PrivacyEmail />{" "}
                 or write to{" "}
                 <PublicationField value={publication.mailingAddress} />. The
-                legal operator remains {publication.operator}, trading as
-                Maestral Technologies.
+                legal operator is {publication.operator}.
               </p>
             </section>
           </div>

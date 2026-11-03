@@ -158,22 +158,40 @@ export default function MaestralHomepage() {
           </div>
         </section>
       </main>
+      
       <footer className="studio-footer">
         <div className="page-width footer-inner">
-          <div>
+          <div className="footer-about">
             <a href="#top" className="footer-brand">
               Maestral Technologies<span>.</span>
             </a>
             <p>Digital products. Connected systems. Built by Maestral.</p>
           </div>
+
+          <div className="footer-address">
+            <span className="footer-company-name">
+              Maestral Technologies LLC
+            </span>
+            <address>
+              30 N Gould St Ste R
+              <br />
+              Sheridan, WY 82801
+              <br />
+              United States
+            </address>
+          </div>
+
           <div className="footer-details">
             <a href="#privacy-policy" className="footer-privacy-link">
               Privacy Policy
             </a>
-            <p>© {new Date().getFullYear()} Maestral Technologies</p>
+            <p>
+              © {new Date().getFullYear()} Maestral Technologies LLC
+            </p>
           </div>
         </div>
       </footer>
+
     </div>
   );
 }

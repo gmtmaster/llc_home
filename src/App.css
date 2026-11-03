@@ -893,13 +893,14 @@ a {
   color: white;
   padding-block: 36px;
 }
+
 .footer-inner {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
   align-items: center;
-  justify-content: space-between;
-  gap: 24px;
+  gap: 32px;
 }
+
 .footer-brand {
   font-size: 19px;
   font-weight: 500;
@@ -914,9 +915,42 @@ a {
   line-height: 1.9;
   margin-top: 5px;
 }
+
+.footer-address {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 5px;
+}
+
+.footer-company-name {
+  font-size: 13px;
+  font-weight: 600;
+  color: #fff;
+}
+
+.footer-address-label {
+  margin-top: 5px;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #aebfd2;
+}
+
+.footer-address address {
+  font-size: 12px;
+  line-height: 1.7;
+  font-style: normal;
+  color: #e0e8f2;
+}
+
 .footer-details {
   text-align: right;
+  justify-self: end;
 }
+
 @media (min-width: 768px) {
   .maestral-site .uplinked-showcase,
   .maestral-site .brew-screenshots {
